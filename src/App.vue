@@ -7,11 +7,27 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 import FooterGuide from './components/FooterGuide/FooterGuide.vue'
+// import {reqFoodCategorys} from './api'  //测试数据的
 export default {
   name: 'App',
   components: {
     FooterGuide 
+  },
+  // async mounted(){  
+  //   // 测试数据的
+  //   const result = await reqFoodCategorys()
+  //   console.log(result)
+  // }
+  mounted(){
+    // this.$store.dispatch('getAddress')  //测试数据 actions 里面的异步数据
+    this.getAddress()
+  },
+
+  methods: {
+    // 映射
+    ...mapActions(['getAddress'])
   }
 }
 </script>

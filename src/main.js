@@ -2,6 +2,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// 注册 store 
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -12,6 +14,7 @@ Vue.component(Button.name, Button) // <mt-button>
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
+  router,  //使用 vue-router
+  store,   //使用vuex
   render: h => h(App)
 })
