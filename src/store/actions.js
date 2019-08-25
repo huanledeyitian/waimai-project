@@ -115,4 +115,9 @@ export default {
         callback && callback()
         }
     },
+
+    //  同步更新 food 中的count 值
+    // updateFoodCount({commit}, {isAdd, food}){
+
+    // }
 }
