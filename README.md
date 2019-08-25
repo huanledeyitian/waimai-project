@@ -28,6 +28,11 @@
 6. 学会使用 vue-lazyload 实现图片惰加载
 7. 学会使用 mockjs 模拟后台数据接口  
 
+### Web应用前后端分离：
+1) 后台向前台提供 API 接口，只负责的提供和计算，而完全不处理展现
+2) 前台通过 Http(ajax)请求获取数据，在浏览器端动态构建界面显示数据
+
+
 ## 3. API接口文档
 
 [项目API接口文档](https://github.com/W-Qing/Vue-MintShop/blob/master/mintshop-server/API.md)

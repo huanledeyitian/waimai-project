@@ -5,6 +5,8 @@ import router from './router'
 // 注册 store 
 import store from './store'
 
+import './mock/mockServer' // 加载mockServer即可
+
 Vue.config.productionTip = false
 
 // 注冊全局组件标签

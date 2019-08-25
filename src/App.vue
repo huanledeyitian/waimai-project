@@ -23,11 +23,12 @@ export default {
   mounted(){
     // this.$store.dispatch('getAddress')  //测试数据 actions 里面的异步数据
     this.getAddress()
+    this.getUserInfo()
   },
 
   methods: {
     // 映射
-    ...mapActions(['getAddress'])
+    ...mapActions(['getAddress', 'getUserInfo'])
   }
 }
 </script>

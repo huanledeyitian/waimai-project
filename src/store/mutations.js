@@ -27,4 +27,24 @@ export default {
     [RECEIVE_SHOPS] (state, {shops}) {
         state.shops = shops
     },
+
+    [RECEIVE_USER_INFO] (state, {userInfo}) {
+        state.userInfo = userInfo
+    },
+
+    [RESET_USER_INFO] (state) {
+        state.userInfo = {}
+    },
+
+    [RECEIVE_INFO](state, {info}) {
+        state.info = info
+    },
+    
+    [RECEIVE_RATINGS](state, {ratings}) {
+        state.ratings = ratings
+    },
+    
+    [RECEIVE_GOODS](state, {goods}) {
+        state.goods = goods
+    },
 }
