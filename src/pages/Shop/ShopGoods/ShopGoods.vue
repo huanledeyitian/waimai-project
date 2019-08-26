@@ -43,9 +43,9 @@
           </li>
         </ul>
       </div>
-      <!-- <ShopCart /> -->
+      <ShopCart/>
     </div>
-    <!-- <Food :food="food" ref="food"/> -->
+    <Food :food="food" ref="food"/>
   </div>
 </template>
 
@@ -55,8 +55,8 @@ import BScroll from 'better-scroll'
 import {mapState} from 'vuex'
 // 加减组件
 import CartControl from '../../../components/CartControl/CartControl.vue'
-// import Food from '../../../components/Food/Food.vue'
-// import ShopCart from '../../../components/ShopCart/ShopCart.vue'
+import Food from '../../../components/Food/Food.vue'
+import ShopCart from '../../../components/ShopCart/ShopCart.vue'
 
 
 export default {
@@ -161,8 +161,8 @@ export default {
 
   components: {
     CartControl,
-    // Food,
-    // ShopCart
+    Food,
+    ShopCart
   }
 }
 </script>

@@ -1,4 +1,5 @@
 // 直接更新 state的多个方法的对象
+import Vue from 'vue'
 
 import {
     RECEIVE_ADDRESS,
@@ -47,4 +48,34 @@ export default {
     [RECEIVE_GOODS](state, {goods}) {
         state.goods = goods
     },
+
+    [INCREMENT_FOOD_COUNT](state, {food}){
+        if(!food.count){ //第一次增加
+            // food.count = 1 //新增属性(没有数据绑定)
+            /*
+            对象
+            属性名
+            属性值
+            */
+            Vue.set(food, 'count', 1)   //让新增的属性也有数据绑定
+            // set 向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。它必须用于向响应式对象上添加新属性，因为 Vue 无法探测普通的新增属性
+            
+            // 将 food 添加到 cartFoods 中
+            state.cartFoods.push(food)
+        }else{
+            food.count++
+        }
+    },
+
+    [DECREMENT_FOOD_COUNT](state, {food}){
+        if(food.count){  //只有有值才去减
+            food.count--
+            if(food.count===0){
+                // 将 food 从 cartFoods 中移除
+                state.cartFoods.splice(state.cartFoods.indexOf(food), 1)
+            }
+        }
+    },
+
+
 }

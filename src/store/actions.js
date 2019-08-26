@@ -35,8 +35,8 @@ export default {
         const result = await reqAddress(geohash)
         // 提交一个mutation
         if (result.code === 0) {
-        const address = result.data
-        commit(RECEIVE_ADDRESS, {address})
+            const address = result.data
+            commit(RECEIVE_ADDRESS, {address})
         }
     },
 
@@ -46,8 +46,8 @@ export default {
         const result = await reqFoodCategorys()
         // 提交一个mutation
         if (result.code === 0) {
-        const categorys = result.data
-        commit(RECEIVE_CATEGORYS, {categorys})
+            const categorys = result.data
+            commit(RECEIVE_CATEGORYS, {categorys})
         }
     },
 
@@ -58,8 +58,8 @@ export default {
         const result = await reqShops(longitude, latitude)
         // 提交一个mutation
         if (result.code === 0) {
-        const shops = result.data
-        commit(RECEIVE_SHOPS, {shops})
+            const shops = result.data
+            commit(RECEIVE_SHOPS, {shops})
         }
     },
 
@@ -89,8 +89,8 @@ export default {
     async getShopInfo({commit}) {
         const result = await reqShopInfo()
         if (result.code === 0) {
-        const info = result.data
-        commit(RECEIVE_INFO, {info})
+            const info = result.data
+            commit(RECEIVE_INFO, {info})
         }
     },
 
@@ -98,10 +98,10 @@ export default {
     async getShopRatings({commit}, callback) {
         const result = await reqShopRatings()
         if (result.code === 0) {
-        const ratings = result.data
-        commit(RECEIVE_RATINGS, {ratings})
-        // 数据更新了, 通知一下组件
-        callback && callback()
+            const ratings = result.data
+            commit(RECEIVE_RATINGS, {ratings})
+            // 数据更新了, 通知一下组件
+            callback && callback()
         }
     },
 
@@ -109,15 +109,20 @@ export default {
     async getShopGoods({commit}, callback) {
         const result = await reqShopGoods()
         if (result.code === 0) {
-        const goods = result.data
-        commit(RECEIVE_GOODS, {goods})
-        // 数据更新了, 通知一下组件
-        callback && callback()
+            const goods = result.data
+            commit(RECEIVE_GOODS, {goods})
+            // 数据更新了, 通知一下组件
+            callback && callback()
         }
     },
 
     //  同步更新 food 中的count 值
-    // updateFoodCount({commit}, {isAdd, food}){
+    updateFoodCount({commit}, {isAdd, food}){
+        if(isAdd){
+            commit(INCREMENT_FOOD_COUNT, {food})
 
-    // }
+        }else{
+            commit(DECREMENT_FOOD_COUNT, {food})
+        }
+    }
 }
