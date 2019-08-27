@@ -29,18 +29,18 @@
 
       <div class="ratingselect">
         <div class="rating-type border-1px">
-          <span class="block positive" >
+          <span class="block positive" :class="{active: selectType===2}" @click="setSelectType(2)">
             全部<span class="count">{{ratings.length}}</span>
           </span>
-          <span class="block positive">
+          <span class="block positive" :class="{active: selectType===0}" @click="setSelectType(0)">
             满意<span class="count">{{positiveSize}}</span>
           </span>
-          <span class="block negative" >
+          <span class="block negative" :class="{active: selectType===1}" @click="setSelectType(1)">
             不满意<span class="count">{{ratings.length-positiveSize}}</span>
           </span>
         </div>
-        <div class="switch">
-          <span class="iconfont icon-check_circle"></span>
+        <div class="switch" :class="{on: onlyShowText}" @click="toggleOnlyShowText">
+          <span class="iconfont icon-check_circle">✔</span>
           <span class="text">只看有内容的评价</span>
         </div>
       </div>
@@ -77,6 +77,12 @@ import BScroll from 'better-scroll'
 import {mapState, mapGetters} from 'vuex'
 import Star from '../../../components/Star/Star.vue'
 export default {
+  data(){
+    return{
+      onlyShowText: true, // 是否只显示有文本的
+      selectType: 2 , // 选择的评价类型: 0满意, 1不满意, 2全部
+    }
+  },
   mounted(){
     // 获取数据
     this.$store.dispatch('getShopRatings',() => {
@@ -91,6 +97,36 @@ export default {
     // 读数据
     ...mapState(['info', 'ratings']),
     ...mapGetters(['positiveSize']),
+
+    filterRatings(){
+      const {ratings, onlyShowText, selectType} = this  //得到相关的数据
+
+      // 产生一个过滤新数组
+      return ratings.filter(rating=>{
+        const {rateType, text} = rating
+        /*
+        条件一: 
+          selectType: 0/1/2
+          rateType: 0满意/1不满意
+          selectType===2 || selectType===rateType
+        条件二：
+          onlyShowText: true/false
+          text: 有值/没值
+          ! onlyShowText || text.length>0
+        */
+        return (selectType===2 || selectType===rateType) && (!onlyShowText || text.length>0)
+      })
+    }
+  },
+
+  methods: {
+    setSelectType(selectType){
+      this.selectType = selectType
+    },
+
+    toggleOnlyShowText(){ //只看有内容的评价
+      this.onlyShowText = !this.onlyShowText
+    }
   },
 
   components: {
