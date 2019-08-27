@@ -51,7 +51,7 @@
         <a href="javascript:;" class="about_us">关于我们</a>
       </div>
       <a href="javascript:" class="go_back" @click="$router.back()">
-        <i class="iconfont icon-jiantou2"></i>
+        <i class="iconfont icon-jiantou2">👈</i>
       </a>
     </div>
 

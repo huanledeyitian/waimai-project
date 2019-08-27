@@ -22,7 +22,7 @@
         <div class="shopcart-list" v-show="listShow">
           <div class="list-header">
             <h1 class="title">购物车</h1>
-            <span class="empty">清空</span>
+            <span class="empty" @click="clearCart">清空</span>
           </div>
           <div class="list-content">
             <ul>
@@ -39,11 +39,15 @@
       </transition>
 
     </div>
+    <!-- 遮罩层 -->
     <div class="list-mask" v-show="listShow" @click="toggleShow"></div>
   </div>
 </template>
 
 <script>
+// 弹出框
+import { MessageBox } from 'mint-ui'
+import BScroll from 'better-scroll'
 import {mapState, mapGetters} from 'vuex'
 import CartControl from '../CartControl/CartControl.vue'
 export default {
@@ -55,14 +59,7 @@ export default {
       isShow: false
     }
   },
-  methods: {
-    toggleShow () {
-        // 只有当总数量大于0时切换
-      if(this.totalCount>0) {
-        this.isShow = !this.isShow
-      }
-    },
-  },
+
   computed: {
     // 读数据
     ...mapState(['cartFoods', 'info']),
@@ -90,11 +87,40 @@ export default {
         this.isShow = false
         return false
       }
-
+      // 加入购物车的列表可以滑动
+      if(this.isShow){  //如果显示就创建
+        this.$nextTick(()=>{
+          // 实现 BScroll 的实例是一个单例
+          if(!this.scroll){
+            this.scroll = new BScroll('.list-content', {
+              click: true
+            })
+          }else{
+            this.scroll.refresh() // 让滚动条刷新一下: 重新统计内容的高度
+          }
+          
+        })
+      }
+      // 当前列表显示
       return this.isShow
     }
   },
 
+  methods: {
+    toggleShow () {
+        // 只有当总数量大于0时切换
+      if(this.totalCount>0) {
+        this.isShow = !this.isShow
+      }
+    },
+    
+    clearCart () {  //清空购物车
+      MessageBox.confirm('确定清空购物车吗?').then(action => {
+        this.$store.dispatch('clearCart')
+      }, () => {});
+    }
+  },
+  
 };
 </script>
 

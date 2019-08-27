@@ -12,6 +12,9 @@ Vue.config.productionTip = false
 // 注冊全局组件标签
 import {Button} from 'mint-ui'
 Vue.component(Button.name, Button) // <mt-button>
+import MintUI from 'mint-ui';
+import '../node_modules/mint-ui/lib/style.css';
+Vue.use(MintUI);
 
 /* eslint-disable no-new */
 new Vue({
