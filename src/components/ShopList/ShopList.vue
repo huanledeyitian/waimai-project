@@ -4,8 +4,7 @@
       <li class="shop_li border-1px" v-for="(shop, index) in shops" :key="index" @click="$router.push('/shop')">
         <a>
           <div class="shop_left">
-            <!-- <img class="shop_img" :src="baseImgUrl+shop.image_path"> -->
-            <img src="http://p0.meituan.net/200.0/deal/0be5db2a43e4772eb64d219630fe92f046534.jpg@75_0_451_451a%7C267h_267w_2e_90Q" alt="" class="shop_img">
+            <img class="shop_img" v-lazy="shop.image_path">
           </div>
           <div class="shop_right">
             <section class="shop_detail_header">

@@ -5,7 +5,7 @@
       <!-- 利用router-link实现到Login组件的跳转 -->
       <router-link to='/login' class="profile-link">
         <div class="profile_image">
-          <i class="iconfont icon-yonghuming"></i>
+          <img src="http://m.qpic.cn/psb?/V10Sb5Lq3bCrPS/CfZ43gsk1JHXiFdbSfNrAyjs6DZORaB.9VGUiK85JBY!/b/dJgAAAAAAAAA&bo=OAQ4BAAAAAARBzA!&rf=viewer_4" alt="">
         </div>
         <div class="user-info">
           <p class="user-info-top" v-if="!userInfo.phone" >{{userInfo.name || '登录/注册'}}</p>
@@ -162,7 +162,7 @@ export default {
         clearFix()
         position relative
         display block
-        background #02a774
+        background-image: linear-gradient(135deg, #FFD000 0%, #FFBD00 100%);
         padding 20px 10px
         .profile_image
           float left
@@ -171,9 +171,9 @@ export default {
           border-radius 50%
           overflow hidden
           vertical-align top
-          .icon-yonghuming
-            background #e4e4e4
-            font-size 62px
+          img 
+            width 100%
+            height 100%
         .user-info
           float left
           margin-top 8px
@@ -204,7 +204,7 @@ export default {
           top 40%
           .icon-previewright
             color #fff
-            font-size 5px
+            font-size 25px
     .profile_info_data
       bottom-border-1px(#e4e4e4)
       width 100%

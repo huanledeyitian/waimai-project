@@ -20,7 +20,7 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   .msite_header
-    background-color #02a774
+    background-image: linear-gradient(135deg, #FFD000 0%, #FFBD00 100%);
     position fixed
     z-index 210
     left 0

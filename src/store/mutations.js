@@ -84,4 +84,7 @@ export default {
         state.cartFoods = []
     },
 
+    [RECEIVE_SEARCH_SHOPS](state, {searchShops}) {
+        state.searchShops = searchShops
+    },
 }
