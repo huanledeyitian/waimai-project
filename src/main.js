@@ -8,6 +8,8 @@ import store from './store'
 
 import './mock/mockServer' // 加载mockServer即可
 
+import './filters'   //加载日期过滤器
+
 Vue.config.productionTip = false
 
 // 引入 gif

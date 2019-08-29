@@ -203,8 +203,8 @@ export default {
                 background-color #02a774
                 border 1px solid #02a774
               .delivery_right
-                color #02a774
-                border 1px solid #02a774
+                color #FFC107
+                border 1px solid #FFC107
           .shop_distance
             clearFix()
             width 100%
