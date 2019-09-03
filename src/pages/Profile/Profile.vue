@@ -5,7 +5,7 @@
       <!-- 利用router-link实现到Login组件的跳转 -->
       <router-link to='/login' class="profile-link">
         <div class="profile_image">
-          <img src="http://m.qpic.cn/psb?/V10Sb5Lq3bCrPS/CfZ43gsk1JHXiFdbSfNrAyjs6DZORaB.9VGUiK85JBY!/b/dJgAAAAAAAAA&bo=OAQ4BAAAAAARBzA!&rf=viewer_4" alt="">
+          <img src="./1.png" alt="">
         </div>
         <div class="user-info">
           <p class="user-info-top" v-if="!userInfo.phone" >{{userInfo.name || '登录/注册'}}</p>
